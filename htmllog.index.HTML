@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VVHSS Thamarakulam Portal">
+    <title>VVHSS Thamarakulam</title>
+    <style>
+        /* General Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1e1e1e;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00ffcc;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            color: #ccc;
+            margin-bottom: 40px;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #333;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .options {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+
+        .option {
+            cursor: pointer;
+            text-align: center;
+            background-color: #00ffcc;
+            padding: 20px;
+            border-radius: 10px;
+            width: 120px;
+            transition: all 0.3s ease;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .option:hover {
+            background-color: #009988;
+            transform: scale(1.1);
+        }
+
+        /* Modal Styling */
+        #adminModal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.75);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            width: 300px;
+        }
+
+        .modal-content input[type="password"] {
+            padding: 10px;
+            width: 80%;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .modal-content button {
+            background-color: #00ffcc;
+            color: #333;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-radius: 5px;
+        }
+
+        .modal-content button:hover {
+            background-color: #009988;
+        }
+
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>VVHSS Thamarakulam</h1>
+        <h2>Complaint Registration Portal</h2>
+        <div class="options">
+            <div class="option" id="studentOption">
+                Student
+            </div>
+
+            <div class="option" id="adminOption">
+                Admin
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Modal -->
+    <div id="adminModal">
+        <div class="modal-content">
+            <h2>Enter Admin Password</h2>
+            <input type="password" id="adminPassword" placeholder="Enter Password">
+            <button onclick="validatePassword()">Submit</button>
+            <p class="error" id="errorMessage" style="display: none;">Incorrect password, try again.</p>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle student option click
+        document.getElementById('studentOption').addEventListener('click', function () {
+            window.location.href = "studentPage.html";  // Replace with actual student page URL
+        });
+
+        // Function to handle admin option click
+        document.getElementById('adminOption').addEventListener('click', function () {
+            document.getElementById('adminModal').style.display = 'flex';
+        });
+
+        // Function to validate password
+        function validatePassword() {
+            const password = document.getElementById('adminPassword').value;
+            const errorMessage = document.getElementById('errorMessage');
+            
+            if (password === "vvcomplaintportal") {
+                window.location.href = "adminPage.html";  // Replace with actual admin page URL
+            } else {
+                errorMessage.style.display = 'block';
+            }
+        }
+
+        // Close the modal if clicking outside the modal content
+        window.onclick = function (event) {
+            const modal = document.getElementById('adminModal');
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        };
+    </script>
+
+</body>
+
+</html>
